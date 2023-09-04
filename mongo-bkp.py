@@ -4,9 +4,9 @@ def create_bkp():
     try:
         if os.environ.get('MONGO_HOST',None):
             if os.environ.get('MONGO_USER',None) and os.environ.get('MONGO_PASS',None):
-                query = "mongodump -h"+os.environ['MONGO_HOST'] +" -u "+os.environ['MONGO_USER']+" -p " +os.environ['MONGO_PASS']
+                query = "mongod/mongodump -h"+os.environ['MONGO_HOST'] +" -u "+os.environ['MONGO_USER']+" -p " +os.environ['MONGO_PASS']
             else:
-                query = "mongodump -h"+os.environ['MONGO_HOST']
+                query = "mongod/mongodump -h"+os.environ['MONGO_HOST']
             cur_date = datetime.datetime.now().strftime("%d-%m-%y")
             cur_time = datetime.datetime.now().strftime("%H:%M:%S")
             file_name = os.environ['FILENAME']+"_"+cur_date+"_"+cur_time+".zip"
